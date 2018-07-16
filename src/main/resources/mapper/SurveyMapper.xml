@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.app02.dao.SurveyMapper">
+
+
+
+	<select id="findAll" resultType="com.briup.app02.bean.Survey">
+		select * from poll_survey
+	</select>
+	<select id="findById" parameterType="Long"
+		resultType="com.briup.app02.bean.Survey">
+		select * from poll_survey  where id=#{id}
+	</select>
+	<insert id="insertById" parameterType="com.briup.app02.bean.Survey">
+		insert into
+		poll_survey (id,state,average,surveydate,user_id,clazz_id,course_id,questionnaire_id)
+		values (#{id},#{state},#{average},#{surveydate},#{user_id},#{clazz_id},#{course_id},#{questionnaire_id})
+	</insert>
+	<update id="updateById" parameterType="com.briup.app02.bean.Qq">
+		update poll_survey set
+		state = #{state},
+		average = #{average},
+		surveydate = #{surveydate},
+		user_id = #{user_id},
+		clazz_id = #{clazz_id},
+		course_id = #{course_id},
+		questionnaire_id = #{questionnaire_id}
+	
+		where id = #{id}
+	</update>
+
+	<delete id="deleteById" parameterType="long">
+		delete from  poll_survey  where id = #{id}
+	</delete>
+</mapper>

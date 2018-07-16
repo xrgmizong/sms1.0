@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.app02.dao.CourseMapper">
+
+
+
+	<select id="findAll" resultType="com.briup.app02.bean.Course">
+		select * from poll_course
+	</select>
+	<select id="findById" parameterType="Long"
+		resultType="com.briup.app02.bean.Course">
+		select * from poll_course where id=#{id}
+	</select>
+	<insert id="insertById" parameterType="com.briup.app02.bean.Course">
+		insert into
+		poll_course  (id,name,description,period)
+		values (#{id},#{name},#{description},#{period})
+	</insert>
+	<update id="updateById" parameterType="com.briup.app02.bean.Course">
+		update poll_course set
+		name = #{name},
+		description = #{description},
+		period=#{period}
+		where id = #{id}
+	</update>
+
+	<delete id="deleteById" parameterType="long">
+		delete from  poll_course  where id = #{id}
+	</delete>
+</mapper>
